@@ -5,7 +5,6 @@ import seaborn as sns
 
 
 # Для одного столбца y
-
 def plot_failure(X: pd.Series, y: pd.Series):
     '''Функция рисует временной ряд на заданном или всём интервале
     Цветом выделяются поломки:
@@ -33,16 +32,16 @@ def plot_failure(X: pd.Series, y: pd.Series):
     sns.lineplot(M3, color='red')
 
 
-def create_sliding_window(X, y, window_size, shift=1):
+def create_sliding_window(X, y=None, window_size=40, shift=1):
     """
     Создает набор данных с окнами, скользящими по временному ряду.
 
     Аргументы:
-    X - временной ряд
+    X - временной ряд, y - метки
     window_size - размер окна
     shift - сдвиг окна
 
-    Возвращает временной массив с окнами,
+    Возвращает кортеж: временной массив с окнами,
     массив с метками для каждого окна
     """
 
@@ -52,11 +51,12 @@ def create_sliding_window(X, y, window_size, shift=1):
         X_window = X[i:(i + window_size)]
         dataset.append(X_window)
 
-        y_window = y[i:(i + window_size)]
-        max_label = np.argmax(np.bincount(y_window, minlength=3))
-        labels.append(max_label)
+        if y is not None:
+            y_window = y[i:(i + window_size)]
+            max_label = np.argmax(np.bincount(y_window, minlength=3))
+            labels.append(max_label)
 
-    return np.array(dataset), np.array(labels)
+    return np.array(dataset), np.array(labels) if y is not None else None
 
 
 def restore_labels(y_window, window_size, shift=1):
