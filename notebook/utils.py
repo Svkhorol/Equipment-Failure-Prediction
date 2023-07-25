@@ -53,13 +53,13 @@ def create_sliding_window(X, y=None, window_size=40, shift=1):
 
         if y is not None:
             y_window = y[i:(i + window_size)]
-            max_label = np.argmax(np.bincount(y_window, minlength=3))
+            max_label = np.argmax(np.bincount(y_window, minlength=2))
             labels.append(max_label)
 
     return np.array(dataset), np.array(labels) if y is not None else None
 
 
-def restore_labels(y_window, window_size, shift=1):
+def restore_labels(y_window, window_size, shift=1) -> np.ndarray:
     """
     Восстанавливает массив меток исходной размерности из массива с окнами.
     Значению присваивается метка из первого окна последовательности.
