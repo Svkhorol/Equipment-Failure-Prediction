@@ -2,9 +2,9 @@
 В репозитории содержится исходный код модели машинного обучения для прогнозирования неисправностей узлов эксгаустера, не приводящих к простою агломерационной машины.  
   
 ## Структура репозитория  
-[`data`](https://github.com/Svkhorol/Equipment-Failure-Prediction/tree/main/data) - директория для хранения данных  
-[`notebook`](https://github.com/Svkhorol/Equipment-Failure-Prediction/tree/main/notebook) - jupyter-ноутбуки с описанием выбраного подхода и метриками  
-[`model.py`](https://github.com/Svkhorol/Equipment-Failure-Prediction/blob/main/model.py) - файл с кодом для воспроизведения модели  
+- [`data`](https://github.com/Svkhorol/Equipment-Failure-Prediction/tree/main/data) - директория для хранения данных  
+- [`notebook`](https://github.com/Svkhorol/Equipment-Failure-Prediction/tree/main/notebook) - jupyter-ноутбуки с описанием выбраного подхода и метриками  
+- [`model.py`](https://github.com/Svkhorol/Equipment-Failure-Prediction/blob/main/model.py) - файл с кодом для воспроизведения модели  
   
 ## Воспроизведение обучения модели  
 - Требуется Python версии не ниже 3.10  
