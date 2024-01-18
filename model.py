@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 
+from argparse import ArgumentParser
 from keras.callbacks import EarlyStopping
 from keras import layers
 from sklearn.metrics import accuracy_score, f1_score
@@ -50,8 +51,12 @@ for n in [5, 6, 7, 8, 9]:
             y_from_txt.append(line.rstrip('\n'))
     y_columns = [column for column in y_from_txt if column.startswith(f'Y_ЭКСГАУСТЕР А/М №{n}')]
 
-    X = pd.read_parquet('data/X_train.parquet', columns=X_columns)
-    y = pd.read_parquet('data/y_train.parquet', columns=y_columns)
+    parser = ArgumentParser(description='Script for model training')
+    parser.add_argument('--indir', help='Input directory for parquet files', required=True)
+    args = parser.parse_args()
+
+    X = pd.read_parquet(args.indir + '/X_train.parquet', columns=X_columns)
+    y = pd.read_parquet(args.indir + '/y_train.parquet', columns=y_columns)
 
     M1 = messages[messages['ВИД_СООБЩЕНИЯ'] == 'M1']
     M1_ex_n = M1[M1['ИМЯ_МАШИНЫ'] == f'ЭКСГАУСТЕР А/М №{n}']

@@ -24,9 +24,7 @@ source venv/Scripts/activate
 python -m pip install --upgrade pip  
 pip install -r requirements.txt  
 ```
-- Загрузить в папку `data` файлы с исходными данными `X_train.parquet` и `y_train.parquet` 
- 
-- В папке `Equipment-Failure-Prediction` запустить скрипт обучения модели:  
+- В папке `Equipment-Failure-Prediction` запустить скрипт обучения модели, который ожидает на входе один параметр: путь до директории с исходными данными `X_train.parquet` и `y_train.parquet`. Пример запуска:  
 ```bash
-python model.py 
+python model.py --indir data 
 ```  
