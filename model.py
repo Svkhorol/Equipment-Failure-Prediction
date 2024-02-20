@@ -46,7 +46,7 @@ for n in [5, 6, 7, 8, 9]:
         f'ЭКСГАУСТЕР {n}. ВИБРАЦИЯ НА ОПОРЕ 4',
         f'ЭКСГАУСТЕР {n}. ВИБРАЦИЯ НА ОПОРЕ 4. ПРОДОЛЬНАЯ.']
     y_from_txt = []
-    with open('data/y_train_columns.txt', 'r') as file:
+    with open('data/y_train_columns.txt', 'r', encoding='utf-8') as file:
         for line in file:
             y_from_txt.append(line.rstrip('\n'))
     y_columns = [column for column in y_from_txt if column.startswith(f'Y_ЭКСГАУСТЕР А/М №{n}')]
