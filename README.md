@@ -5,8 +5,20 @@
 - [`data`](https://github.com/Svkhorol/Equipment-Failure-Prediction/tree/main/data) - директория для хранения данных  
 - [`notebook`](https://github.com/Svkhorol/Equipment-Failure-Prediction/tree/main/notebook) - jupyter-ноутбуки с описанием выбраного подхода и метриками  
 - [`model.py`](https://github.com/Svkhorol/Equipment-Failure-Prediction/blob/main/model.py) - файл с кодом для воспроизведения модели  
+- [`Dockerfile`](https://github.com/Svkhorol/Equipment-Failure-Prediction/blob/main/Dockerfile) - Dockerfile для редактирования и пересборки образа при необходимости
   
 ## Воспроизведение обучения модели  
+Воспроизвести обучение модели можно двумя способами: с помощью Docker, или запустив код обучения в самостоятельно собранном проекте.
+
+#### Запуск Docker-контейнера
+- Требуется установленный и запущенный Docker.
+- Запустить контейнер из директории хоста, содержащей файлы с исходными данными `X_train.parquet` и `y_train.parquet`:
+```bash
+docker run -v "$(pwd)":/src/data khoro/exhaust:v2.0
+```
+- В результате загрузится образ с Docker Hub, запустится контейнер. По мере работы контейнера будут выводиться метрики обучения.
+
+#### Запуск исходного кода
 - Требуется Python версии не ниже 3.10  
   
 - Клонировать репозиторий:
